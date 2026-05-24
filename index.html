@@ -25,7 +25,7 @@
     <nav class="bg-white shadow-md p-4 flex justify-between items-center">
         <h1 class="text-2xl font-extrabold text-ocean-blue">Clean Can Co.</h1>
         <div>
-            <button id="loginBtn" class="text-gray-600 font-semibold hover:text-ocean-blue mr-4 transition">Customer Portal</button>
+            <a href="https://billing.stripe.com/p/login/test_14A14p5Cz3cCedp20P43S00" class="text-gray-600 font-semibold hover:text-ocean-blue mr-4 transition">Customer Portal</a>
             <a href="#signup" class="bg-eco-green text-white font-bold px-4 py-2 rounded shadow hover:bg-green-600 transition">Sign Up</a>
         </div>
     </nav>
@@ -147,14 +147,14 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
         
-        // 2. PASTE YOUR REAL FIREBASE CONFIG HERE
+        // 2. Your Firebase Config
         const firebaseConfig = {
-        apiKey: "AIzaSyB1z3pkf_2coU-hHG7CCW73gUZNyz68zTo",
-        authDomain: "clean-can-company.firebaseapp.com",
-        projectId: "clean-can-company",
-        storageBucket: "clean-can-company.firebasestorage.app",
-        messagingSenderId: "164960871922",
-        appId: "1:164960871922:web:9ec990a1eb13539b15376b"
+            apiKey: "AIzaSyB1z3pkf_2coU-hHG7CCW73gUZNyz68zTo",
+            authDomain: "clean-can-company.firebaseapp.com",
+            projectId: "clean-can-company",
+            storageBucket: "clean-can-company.firebasestorage.app",
+            messagingSenderId: "164960871922",
+            appId: "1:164960871922:web:9ec990a1eb13539b15376b"
         };
 
         // 3. Initialize Firebase and Firestore
@@ -171,7 +171,7 @@
 
             // Change button state so the user knows it's working
             const originalBtnText = submitBtn.innerHTML;
-            submitBtn.innerHTML = "<span>Saving Details...</span>";
+            submitBtn.innerHTML = "<span>Securing Checkout...</span>";
             submitBtn.disabled = true;
 
             try {
@@ -185,27 +185,32 @@
                     zipCode: document.getElementById('zipCode').value,
                     selectedPlan: document.getElementById('plan-select').value,
                     createdAt: serverTimestamp(),
-                    status: "pending_payment" // We will update this to "active" once Stripe clears
+                    status: "pending_payment" 
                 };
 
                 // Add a new document to the "customers" collection in Firestore
                 const docRef = await addDoc(collection(db, "customers"), customerData);
                 console.log("Customer saved with ID: ", docRef.id);
 
-                // Success! (In the next step, this is where we will redirect to Stripe)
-                alert("Success! Your details have been saved. (Stripe integration coming next!)");
+                // STRIPE ROUTING LOGIC
+                const plan = document.getElementById('plan-select').value;
                 
-                // Reset the form
-                form.reset();
+                if (plan === 'monthly') {
+                    window.location.href = "https://buy.stripe.com/test_3cI9AVghdaF40mzgVJ43S04";
+                } else if (plan === 'bi-monthly') {
+                    window.location.href = "https://buy.stripe.com/test_cNi14p7KH5kKfhtgVJ43S03";
+                } else if (plan === 'single') {
+                    window.location.href = "https://buy.stripe.com/test_cNidRb8OLfZoglx48X43S05";
+                }
                 
             } catch (error) {
                 console.error("Error adding document: ", error);
                 alert("There was an error saving your details. Please try again.");
-            } finally {
-                // Restore button state
+                
+                // Restore button state ONLY if there is an error
                 submitBtn.innerHTML = originalBtnText;
                 submitBtn.disabled = false;
-            }
+            } 
         });
     </script>
 </body>
