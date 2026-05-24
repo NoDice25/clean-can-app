@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clean Can Company | 43235 Mobile Sanitation</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'eco-green': '#22c55e',
+                        'ocean-blue': '#1e3a8a',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+    
+    <nav class="bg-white shadow-md p-4 flex justify-between items-center">
+        <h1 class="text-2xl font-extrabold text-ocean-blue">Clean Can Co.</h1>
+        <div>
+            <button id="loginBtn" class="text-gray-600 font-semibold hover:text-ocean-blue mr-4 transition">Customer Portal</button>
+            <a href="#signup" class="bg-eco-green text-white font-bold px-4 py-2 rounded shadow hover:bg-green-600 transition">Sign Up</a>
+        </div>
+    </nav>
+
+    <header class="bg-ocean-blue text-white text-center py-24 px-4">
+        <h2 class="text-5xl font-extrabold mb-6">The cleanest bins in 43235.</h2>
+        <p class="text-xl text-blue-200 mb-10 max-w-2xl mx-auto">We blast away grime, sanitize, and leave your trash cans smelling fresh. Professional mobile cleaning right at your curb.</p>
+        <a href="#signup" class="bg-eco-green text-white text-xl font-bold px-8 py-4 rounded-full shadow-lg hover:bg-green-600 transition">Get Started</a>
+    </header>
+
+    <main id="app-content" class="max-w-6xl mx-auto p-6 mt-8">
+        
+        <section class="mb-16 text-center mt-8">
+            <h3 class="text-3xl font-bold text-ocean-blue mb-8">How It Works</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow border-t-4 border-eco-green">
+                    <div class="text-4xl mb-4">📝</div>
+                    <h4 class="text-xl font-bold text-ocean-blue mb-2">1. Sign Up</h4>
+                    <p class="text-gray-600">Enter your 43235 address and select your cleaning frequency.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow border-t-4 border-ocean-blue">
+                    <div class="text-4xl mb-4">🚚</div>
+                    <h4 class="text-xl font-bold text-ocean-blue mb-2">2. We Arrive</h4>
+                    <p class="text-gray-600">We schedule your wash for the day after your local trash pickup.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow border-t-4 border-eco-green">
+                    <div class="text-4xl mb-4">✨</div>
+                    <h4 class="text-xl font-bold text-ocean-blue mb-2">3. Clean & Sanitize</h4>
+                    <p class="text-gray-600">Bins are pressure washed at 200°, deodorized, and left at your curb.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="mb-16">
+            <h3 class="text-3xl font-bold text-ocean-blue text-center mb-8">Choose Your Plan</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <div class="bg-white rounded-lg shadow-md p-8 text-center border border-gray-200">
+                    <h4 class="text-xl font-bold text-gray-700 mb-4">Bi-Monthly</h4>
+                    <div class="text-4xl font-extrabold text-ocean-blue mb-2">$22<span class="text-lg text-gray-500 font-medium"> /can</span></div>
+                    <p class="text-gray-500 text-sm mb-6">Cleaned every 8 weeks.</p>
+                    <button onclick="document.getElementById('plan-select').value='bi-monthly'; document.getElementById('signup').scrollIntoView();" class="w-full bg-gray-100 text-ocean-blue font-bold py-2 rounded hover:bg-gray-200 transition">Select Plan</button>
+                </div>
+
+                <div class="bg-ocean-blue rounded-lg shadow-xl p-8 text-center transform scale-105 relative">
+                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-eco-green text-white px-4 py-1 rounded-full text-sm font-bold shadow">MOST POPULAR</div>
+                    <h4 class="text-xl font-bold text-blue-100 mb-4">Monthly</h4>
+                    <div class="text-4xl font-extrabold text-white mb-2">$20<span class="text-lg text-blue-200 font-medium"> /can</span></div>
+                    <p class="text-blue-200 text-sm mb-6">Cleaned every 4 weeks. Best value.</p>
+                    <button onclick="document.getElementById('plan-select').value='monthly'; document.getElementById('signup').scrollIntoView();" class="w-full bg-eco-green text-white font-bold py-2 rounded shadow hover:bg-green-600 transition">Select Plan</button>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md p-8 text-center border border-gray-200">
+                    <h4 class="text-xl font-bold text-gray-700 mb-4">Single Wash</h4>
+                    <div class="text-4xl font-extrabold text-ocean-blue mb-2">$25<span class="text-lg text-gray-500 font-medium"> /can</span></div>
+                    <p class="text-gray-500 text-sm mb-6">One-time deep clean.</p>
+                    <button onclick="document.getElementById('plan-select').value='single'; document.getElementById('signup').scrollIntoView();" class="w-full bg-gray-100 text-ocean-blue font-bold py-2 rounded hover:bg-gray-200 transition">Select Plan</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="signup" class="bg-white shadow-lg rounded-xl p-8 max-w-3xl mx-auto border-t-8 border-eco-green">
+            <h3 class="text-2xl font-bold text-ocean-blue mb-6 text-center">Schedule Your Cleaning</h3>
+            
+            <form id="registrationForm" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                        <input type="text" id="fullName" required class="w-full border border-gray-300 rounded p-2 focus:ring-2 focus:ring-eco-green focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                        <input type="email" id="email" required class="w-full border border-gray-300 rounded p-2 focus:ring-2 focus:ring-eco-green focus:outline-none">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                        <input type="tel" id="phone" required class="w-full border border-gray-300 rounded p-2 focus:ring-2 focus:ring-eco-green focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Number of Cans</label>
+                        <input type="number" id="canCount" min="1" max="10" value="2" required class="w-full border border-gray-300 rounded p-2 focus:ring-2 focus:ring-eco-green focus:outline-none">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Street Address</label>
+                    <input type="text" id="address" required class="w-full border border-gray-300 rounded p-2 focus:ring-2 focus:ring-eco-green focus:outline-none">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Zip Code</label>
+                        <input type="text" id="zipCode" value="43235" required class="w-full border border-gray-300 rounded p-2 focus:ring-2 focus:ring-eco-green focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Selected Plan</label>
+                        <select id="plan-select" class="w-full border border-gray-300 rounded p-2 focus:ring-2 focus:ring-eco-green focus:outline-none bg-white">
+                            <option value="monthly">Monthly ($20/can)</option>
+                            <option value="bi-monthly">Bi-Monthly ($22/can)</option>
+                            <option value="single">Single Wash ($25/can)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="pt-4">
+                    <button type="submit" id="submitBtn" class="w-full bg-ocean-blue text-white font-bold py-3 rounded shadow hover:bg-blue-800 transition flex justify-center items-center">
+                        <span>Proceed to Secure Checkout</span>
+                    </button>
+                    <p class="text-xs text-center text-gray-500 mt-3">Payments processed securely via Stripe. You won't be charged until after your first wash.</p>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script type="module">
+        // 1. Import Firebase Core and Firestore Database modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+        
+        // 2. PASTE YOUR REAL FIREBASE CONFIG HERE
+        const firebaseConfig = {
+        apiKey: "AIzaSyB1z3pkf_2coU-hHG7CCW73gUZNyz68zTo",
+        authDomain: "clean-can-company.firebaseapp.com",
+        projectId: "clean-can-company",
+        storageBucket: "clean-can-company.firebasestorage.app",
+        messagingSenderId: "164960871922",
+        appId: "1:164960871922:web:9ec990a1eb13539b15376b"
+        };
+
+        // 3. Initialize Firebase and Firestore
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        console.log("Firebase & Firestore Initialized!");
+
+        // 4. Handle Form Submission
+        const form = document.getElementById('registrationForm');
+        const submitBtn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault(); // Stop the page from refreshing
+
+            // Change button state so the user knows it's working
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.innerHTML = "<span>Saving Details...</span>";
+            submitBtn.disabled = true;
+
+            try {
+                // Gather all the input values
+                const customerData = {
+                    fullName: document.getElementById('fullName').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    canCount: parseInt(document.getElementById('canCount').value),
+                    address: document.getElementById('address').value,
+                    zipCode: document.getElementById('zipCode').value,
+                    selectedPlan: document.getElementById('plan-select').value,
+                    createdAt: serverTimestamp(),
+                    status: "pending_payment" // We will update this to "active" once Stripe clears
+                };
+
+                // Add a new document to the "customers" collection in Firestore
+                const docRef = await addDoc(collection(db, "customers"), customerData);
+                console.log("Customer saved with ID: ", docRef.id);
+
+                // Success! (In the next step, this is where we will redirect to Stripe)
+                alert("Success! Your details have been saved. (Stripe integration coming next!)");
+                
+                // Reset the form
+                form.reset();
+                
+            } catch (error) {
+                console.error("Error adding document: ", error);
+                alert("There was an error saving your details. Please try again.");
+            } finally {
+                // Restore button state
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
